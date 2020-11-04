@@ -34,6 +34,7 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
 	  - [ClassValidatorFormBuilderService](#classvalidatorformbuilderservice)
 		  - [classType parameter](#classtype-parameter)
 	  - [ClassValidatorFormGroup](#classvalidatorformgroup)
+  - [Stackblitz example](https://stackblitz.com/edit/ngx-reactive-form-class-validator)
   - [Developer note](#developer-note)
   
 ## Installation
@@ -126,7 +127,7 @@ profile-form.component.ts
 		  ),
 	    });
 #### Using ClassValidatorFormGroup class
-As it's possible with angular `FormGroup` class we can directly create a using the constructor/
+As it's possible with angular `FormGroup` class we can directly create a `ClassValidatorFormGroup` using the constructor
 
 
     export class ProfileFormComponent {
