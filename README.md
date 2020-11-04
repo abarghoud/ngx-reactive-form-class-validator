@@ -95,7 +95,7 @@ app.module.ts
 
     imports: [  
       ...
-      DynamicFormBuilderModule.forRoot(),  
+      ClassValidatorFormBuilderModule.forRoot(),  
       ...
     ],
 Then in your component
@@ -171,7 +171,7 @@ app.module.ts
 
     imports: [  
       ...
-      DynamicFormBuilderModule.forRoot(),  
+      ClassValidatorFormBuilderModule.forRoot(),  
       ...
     ],
 ### ClassValidatorFormBuilderService
