@@ -1,6 +1,6 @@
 
 # ngx-reactive-form-class-validator
-A lightweight library for dynamically validate Angular reactive forms using [class-validator](https://github.com/typestack/class-validator)   library.
+A lightweight library for dynamically validate Angular reactive forms using [class-validator](https://github.com/typestack/class-validator) library.
 
 <p>
   <a href="https://www.npmjs.com/package/ngx-reactive-form-class-validator">
