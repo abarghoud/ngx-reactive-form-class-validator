@@ -9,6 +9,12 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
   <a href="https://www.npmjs.com/package/ngx-reactive-form-class-validator">
     <img src="https://img.shields.io/bundlephobia/min/ngx-reactive-form-class-validator" alt="npm minified size" />
   </a>&nbsp;
+  <a href="https://codecov.io/gh/abarghoud/ngx-reactive-form-class-validator">
+      <img src="https://img.shields.io/codecov/c/github/abarghoud/ngx-reactive-form-class-validator?color=green" alt="Code coverage" />
+  </a>&nbsp;
+  <a href="https://app.circleci.com/pipelines/github/abarghoud/ngx-reactive-form-class-validator">
+      <img src="https://img.shields.io/circleci/build/github/abarghoud/ngx-reactive-form-class-validator/main" alt="Build status" />
+  </a>&nbsp;
 </p>
 
 ## Table of contents
