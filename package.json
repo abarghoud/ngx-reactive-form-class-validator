@@ -51,9 +51,9 @@
     "copy-license": "copy .\\LICENSE.txt .\\dist\\libs\\ngx-reactive-form-class-validator",
     "copy-changelog": "copy .\\Changelog.md .\\dist\\libs\\ngx-reactive-form-class-validator",
     "copy-files": "run-s copy-readme copy-license",
-    "bump-version:major": "npm version major --force && cd libs/ngx-reactive-form-class-validator && npm version major --force",
-    "bump-version:minor": "npm version minor --force && cd libs/ngx-reactive-form-class-validator && npm version minor --force",
-    "bump-version:patch": "npm version patch --force && cd libs/ngx-reactive-form-class-validator && npm version patch --force",
+    "bump-version:major": "cd libs/ngx-reactive-form-class-validator && npm version major --force",
+    "bump-version:minor": "cd libs/ngx-reactive-form-class-validator && npm version minor --force",
+    "bump-version:patch": "cd libs/ngx-reactive-form-class-validator && npm version patch --force",
     "pre-publish:minor": "run-s bump-version:minor build:lib-pack",
     "pre-publish:major": "run-s bump-version:major build:lib-pack",
     "pre-publish:patch": "run-s bump-version:patch build:lib-pack commit-git"
