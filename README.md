@@ -40,6 +40,10 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
 ## Installation
 
     npm install --save ngx-reactive-form-class-validator
+    
+    // OR
+    
+    yarn add ngx-reactive-form-class-validator
 ### Peer dependencies
     "@angular/common": "^10.0.0",  
     "@angular/core": "^10.0.0",  
@@ -194,7 +198,7 @@ An Angular injectable service having the same methods as Angular [FormBuilder](h
 #### classType parameter
 We've introduced a new parameter called `classType` (a class type containing [class-validator](https://github.com/typestack/class-validator) decorators) that you should provide, to enable us to perform dynamic validations.
 ### ClassValidatorFormGroup
-A typescript class extending angular [FormGroup](https://angular.io/api/forms/FormGroup) class, with a minor change of `constructor` signautre, the [classType parameter](#classType-parameter).
+A typescript class extending angular [FormGroup](https://angular.io/api/forms/FormGroup) class, with a minor change of `constructor` signature, the [classType parameter](#classType-parameter).
 
     export class ClassValidatorFormGroup extends FormGroup {        
      public constructor(  
