@@ -1,0 +1,33 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  # Changes
+  $CHANGES
+categories:
+  - title: 'Breaking'
+    label: 'release: breaking'
+  - title: 'New'
+    label: 'release: feature'
+  - title: 'Bug Fixes'
+    label: 'release: bug'
+  - title: 'Maintenance'
+    label: 'release: maintenance'
+  - title: 'Documentation'
+    label: 'release: docs'
+  - title: 'Dependency Updates'
+    label: 'release: dependencies'
+
+version-resolver:
+  major:
+    labels:
+      - 'release: breaking'
+  minor:
+    labels:
+      - 'release: feature'
+  patch:
+    labels:
+      - 'release: bug'
+      - 'release: maintenance'
+      - 'release: docs'
+      - 'release: dependencies'
+      - 'release: security'
