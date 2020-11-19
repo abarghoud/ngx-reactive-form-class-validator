@@ -95,6 +95,30 @@ describe('The ClassValidatorFormControl class', () => {
         });
       });
 
+      describe('When AbstractControlOptions validators', () => {
+        beforeEach(() => {
+          emailClassValidatorFormControl.setValidatorsWithDynamicValidation({
+            validators: [
+              Validators.maxLength(8),
+              (): ValidationErrors => ({isSecondValidatorError: true}),
+            ]
+          });
+        });
+
+        it('should use validators provided as well as dynamic validator', () => {
+          emailClassValidatorFormControl.setValue('4546546546565');
+
+          expect(emailClassValidatorFormControl.errors).toEqual({
+            isEmail: 'email must be an email',
+            maxlength: {
+              actualLength: 13,
+              requiredLength: 8,
+            },
+            isSecondValidatorError: true,
+          });
+        });
+      });
+
       describe('When `null` provided', () => {
         beforeEach(() => {
           emailClassValidatorFormControl.setValidatorsWithDynamicValidation(undefined);

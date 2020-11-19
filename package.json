@@ -71,7 +71,6 @@
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
     "@nrwl/angular": "^10.3.3",
-    "cerialize": "^0.1.18",
     "class-validator": "^0.12.2",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
