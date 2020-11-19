@@ -24,7 +24,7 @@ const isAbstractControlOptions = (options: AbstractControlOptions | { [key: stri
 @Injectable()
 export class ClassValidatorFormBuilderService {
   public group(
-    classType: ClassType<any>,
+    formClassType: ClassType<any>,
     controlsConfig: { [p: string]: any },
     options?: AbstractControlOptions | { [p: string]: any } | null,
   ): ClassValidatorFormGroup {
@@ -48,7 +48,7 @@ export class ClassValidatorFormBuilderService {
       }
     }
 
-    return new ClassValidatorFormGroup(classType, controls, {asyncValidators, updateOn, validators});
+    return new ClassValidatorFormGroup(formClassType, controls, {asyncValidators, updateOn, validators});
   }
 
   public array(

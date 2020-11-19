@@ -22,7 +22,7 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
   - [Installation](#installation)
 	  - [Peer dependencies](#peer-dependencies)
   - [Usage](#usage)
-	  - [Defining classes with validators and deserializers](#defining-classes-with-validators-and-deserializers)
+	  - [Defining classes with validators](#defining-classes-with-validators)
 	  - [Creating a ClassValidatorFormGroup](#creating-a-classvalidatorformgroup)
 		  - [Using ClassValidatorFormBuilderService](#using-classvalidatorformbuilderservice)
 		  - [Using ClassValidatorFormGroup class](#using-classvalidatorformgroup-class)
@@ -45,34 +45,28 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
     
     yarn add ngx-reactive-form-class-validator
 ### Peer dependencies
-    "@angular/common": "^10.0.0",  
-    "@angular/core": "^10.0.0",  
-    "@angular/forms": "^10.0.0",  
-    "class-validator": "^0.12.2",  
-    "cerialize": "^0.1.18"
+    "@angular/common": ">= 2.0.0 <= 11",
+    "@angular/core": ">= 2.0.0 <= 11",
+    "@angular/forms": ">= 2.0.0 <= 11",
+    "class-validator": "^0.12.2"
 
 ## Usage
 ### Defining classes with validators and deserializers
-**Please note that properties without a deserialize decorator will not be validated, see [cerialize](https://github.com/weichx/cerialize#readme)**
+**Please note that properties without a class-validator decorator will not be validated, see [class-validator](https://github.com/typestack/class-validator)**
 profile.ts
 
-    import { deserialize, deserializeAs } from 'cerialize';  
     import { IsEmail, IsNotEmpty, ValidateNested } from 'class-validator';  
       
     class Profile {  
-      @deserialize  
       @IsNotEmpty()  
       public firstName: string;  
       
-      @deserialize  
       @IsNotEmpty()  
       public lastName: string;  
 
-	  @deserialize  
       @IsEmail()  
       public email: string;  	
       
-      @deserializeAs(Address)  
       @ValidateNested()  
       public address: Address;  
     }
@@ -81,19 +75,15 @@ address.ts
     import { IsNotEmpty, IsOptional, ValidateNested } from 'class-validator';  
     
     class Address {  
-      @deserialize  
       @IsNotEmpty()  
       public street: string;  
       
-      @deserialize  
       @IsNotEmpty()  
       public city: string;  
       
-      @deserialize  
       @IsOptional()  
       public state: string;  
       
-      @deserialize  
       @IsNotEmpty()  
       public zip: string;  
     } 
