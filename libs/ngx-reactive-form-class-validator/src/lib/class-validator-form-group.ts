@@ -41,9 +41,21 @@ export class ClassValidatorFormGroup extends FormGroup {
    *
    * @param name The control name to add to the collection
    * @param control Provides the control for the given name
+   * @param options Specifies whether this FormGroup instance should emit events after a new
+   *     control is added.
+   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * `valueChanges` observables emit events with the latest status and value when the control is
+   * added. When false, no events are emitted.
+   *
    */
-  public addControl(name: string, control: AbstractControl): void {
-    super.addControl(name, control);
+  public addControl(
+    name: string,
+    control: AbstractControl,
+    options?: {
+      emitEvent?: boolean;
+    },
+  ): void {
+    super.addControl(name, control, options);
     this.assignFormValueToClassValue();
     this.setClassValidatorControlsContainerGroupClassValue();
   }
@@ -52,9 +64,19 @@ export class ClassValidatorFormGroup extends FormGroup {
    * Remove a control from this group.
    *
    * @param name The control name to remove from the collection
+   * @param options Specifies whether this FormGroup instance should emit events after a
+   *     control is removed.
+   * * `emitEvent`: When true or not supplied (the default), both the `statusChanges` and
+   * `valueChanges` observables emit events with the latest status and value when the control is
+   * removed. When false, no events are emitted.
    */
-  public removeControl(name: string): void {
-    super.removeControl(name);
+  public removeControl(
+    name: string,
+    options?: {
+      emitEvent?: boolean;
+    },
+  ): void {
+    super.removeControl(name, options);
     this.assignFormValueToClassValue();
     this.setClassValidatorControlsContainerGroupClassValue();
   }
