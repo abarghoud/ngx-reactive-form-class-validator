@@ -1,6 +1,3 @@
-module.exports = {
-  projects: [
-    '<rootDir>/apps/example',
-    '<rootDir>/libs/ngx-reactive-form-class-validator',
-  ],
-};
+const { getJestProjects } = require('@nrwl/jest');
+
+module.exports = { projects: [...getJestProjects(), '<rootDir>/apps/example'] };
