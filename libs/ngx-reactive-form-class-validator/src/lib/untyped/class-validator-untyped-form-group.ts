@@ -1,18 +1,9 @@
-import {
-  AbstractControl,
-  AbstractControlOptions,
-  AsyncValidatorFn,
-  FormGroup,
-  ValidatorFn,
-  ɵOptionalKeys
-} from '@angular/forms';
+import { AbstractControl, AbstractControlOptions, AsyncValidatorFn, UntypedFormGroup, ValidatorFn } from '@angular/forms';
 
-import { ClassValidatorFormControl } from './class-validator-form-control';
-import { ClassType } from './types';
+import { ClassValidatorUntypedFormControl } from './class-validator-untyped-form-control';
+import { ClassType } from '../types';
 
-export class ClassValidatorFormGroup<TControl extends {
-  [K in keyof TControl]: AbstractControl<any>;
-} = any> extends FormGroup<TControl> {
+export class ClassValidatorUntypedFormGroup extends UntypedFormGroup {
   private classValue: any;
 
   /**
@@ -31,7 +22,9 @@ export class ClassValidatorFormGroup<TControl extends {
    */
   public constructor(
     private readonly formClassType: ClassType<any>,
-    controls: TControl,
+    controls: {
+      [key: string]: AbstractControl;
+    },
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null,
   ) {
@@ -55,9 +48,9 @@ export class ClassValidatorFormGroup<TControl extends {
    * added. When false, no events are emitted.
    *
    */
-  public addControl<K extends string&keyof TControl>(
-    name: K,
-    control: Required<TControl>[K],
+  public addControl(
+    name: string,
+    control: AbstractControl,
     options?: {
       emitEvent?: boolean;
     },
@@ -77,8 +70,11 @@ export class ClassValidatorFormGroup<TControl extends {
    * `valueChanges` observables emit events with the latest status and value when the control is
    * removed. When false, no events are emitted.
    */
-  public removeControl<S extends string>(
-    name: ɵOptionalKeys<TControl>&S, options: {emitEvent?: boolean;} = {}
+  public removeControl(
+    name: string,
+    options?: {
+      emitEvent?: boolean;
+    },
   ): void {
     super.removeControl(name, options);
     this.assignFormValueToClassValue();
@@ -87,8 +83,8 @@ export class ClassValidatorFormGroup<TControl extends {
 
   private setClassValidatorControlsContainerGroupClassValue(): void {
     Object.entries(this.controls).forEach(([controlName, control]) => {
-      if (control instanceof ClassValidatorFormControl) {
-        (this.controls[controlName] as ClassValidatorFormControl)
+      if (control instanceof ClassValidatorUntypedFormControl) {
+        (this.controls[controlName] as ClassValidatorUntypedFormControl)
           .setNameAndFormGroupClassValue(controlName, this.classValue);
       }
     });

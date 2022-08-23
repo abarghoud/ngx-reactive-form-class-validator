@@ -1,14 +1,14 @@
 import {
   AbstractControlOptions,
   AsyncValidatorFn,
-  FormControl,
+  UntypedFormControl,
   ValidationErrors,
   ValidatorFn,
   Validators
 } from '@angular/forms';
 import { validateSync } from 'class-validator';
 
-export class ClassValidatorFormControl<T = any> extends FormControl<T> {
+export class ClassValidatorUntypedFormControl extends UntypedFormControl {
   private formGroupClassValue: any;
   private name: string;
 
@@ -70,7 +70,7 @@ export class ClassValidatorFormControl<T = any> extends FormControl<T> {
     return validator as ValidatorFn;
   }
 
-  private readonly dynamicValidator = (control: ClassValidatorFormControl): ValidationErrors => {
+  private readonly dynamicValidator = (control: ClassValidatorUntypedFormControl): ValidationErrors => {
     this.formGroupClassValue[this.name] = control.value;
 
     const validationErrors = validateSync(this.formGroupClassValue)
