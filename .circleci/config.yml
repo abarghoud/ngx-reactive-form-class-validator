@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node:14
     steps:
     - checkout
-    - run: npm install
-    - run: npm install codecov --no-save
-    - run: npm run build:lib
-    - run: npm run test:lib:coverage && npx codecov --token=04e1aa0a-7c13-4b0e-bfe6-9d22f1f2c2ea
+    - run: yarn install
+    - run: yarn add codecov
+    - run: yarn build:lib
+    - run: yarn test:lib:coverage && npx codecov --token=04e1aa0a-7c13-4b0e-bfe6-9d22f1f2c2ea

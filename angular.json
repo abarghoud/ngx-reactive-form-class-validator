@@ -2,6 +2,7 @@
   "version": 1,
   "projects": {
     "ngx-reactive-form-class-validator": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/ngx-reactive-form-class-validator",
       "sourceRoot": "libs/ngx-reactive-form-class-validator/src",
@@ -30,7 +31,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.js",
+            "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts",
             "passWithNoTests": true
           }
         }
