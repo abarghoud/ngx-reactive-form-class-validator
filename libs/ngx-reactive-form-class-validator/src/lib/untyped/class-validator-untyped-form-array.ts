@@ -2,11 +2,11 @@ import {
   AbstractControl,
   AbstractControlOptions,
   AsyncValidatorFn,
-  FormArray,
+  UntypedFormArray,
   ValidatorFn
 } from '@angular/forms';
 
-export class ClassValidatorFormArray extends FormArray {
+export class ClassValidatorUntypedFormArray extends UntypedFormArray {
   public constructor(
     controls: AbstractControl[],
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,

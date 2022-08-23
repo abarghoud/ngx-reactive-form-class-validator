@@ -22,13 +22,14 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
   - [Installation](#installation)
 	  - [Peer dependencies](#peer-dependencies)
   - [Usage](#usage)
-	  - [Defining classes with validators](#defining-classes-with-validators)
-	  - [Creating a ClassValidatorFormGroup](#creating-a-classvalidatorformgroup)
-		  - [Using ClassValidatorFormBuilderService](#using-classvalidatorformbuilderservice)
-		  - [Using ClassValidatorFormGroup class](#using-classvalidatorformgroup-class)
-	- [Add custom validators](#add-custom-validators)
-		- [Providing validators when creating the ClassValidatorFormControl](#providing-validators-when-creating-the-classvalidatorformcontrol)
-		- [Providing validators using  `setValidators`/`setValidatorsWithDynamicValidation`  methods](#providing-validators-using-setvalidatorssetvalidatorswithdynamicvalidation-methods)
+    - [Defining classes with validators](#defining-classes-with-validators)
+    - [Untyped classes](#untyped-classes)
+    - [Creating a ClassValidatorFormGroup](#creating-a-classvalidatorformgroup)
+      - [Using ClassValidatorFormBuilderService](#using-classvalidatorformbuilderservice)
+      - [Using ClassValidatorFormGroup class](#using-classvalidatorformgroup-class)
+    - [Add custom validators](#add-custom-validators)
+      - [Providing validators when creating the ClassValidatorFormControl](#providing-validators-when-creating-the-classvalidatorformcontrol)
+      - [Providing validators using  `setValidators`/`setValidatorsWithDynamicValidation`  methods](#providing-validators-using-setvalidatorssetvalidatorswithdynamicvalidation-methods)
   -  [Available classes](#available-classes)
 	  - [ClassValidatorFormBuilderModule](#classvalidatorformbuildermodule)
 	  - [ClassValidatorFormBuilderService](#classvalidatorformbuilderservice)
@@ -45,9 +46,9 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
     
     yarn add ngx-reactive-form-class-validator
 ### Peer dependencies
-    "@angular/common": ">= 2.0.0 <= ^13.0.0",
-    "@angular/core": ">= 2.0.0 <= ^13.0.0",
-    "@angular/forms": ">= 2.0.0 <= ^13.0.0",
+    "@angular/common": ">= 2.0.0 <= ^14.0.0",
+    "@angular/core": ">= 2.0.0 <= ^14.0.0",
+    "@angular/forms": ">= 2.0.0 <= ^14.0.0",
     "class-validator": "^0.12.2"
 
 ## Usage
@@ -88,6 +89,8 @@ address.ts
       public zip: string;  
     } 
 
+### Untyped classes
+Untyped version of ngx-class-validator form classes exist in order to be backward compatible with angular untyped form classes
 ### Creating a ClassValidatorFormGroup
 #### Using ClassValidatorFormBuilderService
 As described [here](#classvalidatorformbuilderservice) to be able to use the `ClassValidatorFormBuilderService`, you need to import [ClassValidatorFormBuilderModule](#classvalidatorformbuildermodule).

@@ -5,15 +5,14 @@ import {
   AsyncValidatorFn,
   FormArray,
   FormControl,
-  FormControlState,
   FormGroup,
   ValidatorFn
 } from '@angular/forms';
 
-import { ClassValidatorFormGroup } from './class-validator-form-group';
-import { ClassValidatorFormControl } from './class-validator-form-control';
-import { ClassValidatorFormArray } from './class-validator-form-array';
-import { ClassType } from './types';
+import { ClassValidatorUntypedFormGroup } from './class-validator-untyped-form-group';
+import { ClassValidatorUntypedFormControl } from './class-validator-untyped-form-control';
+import { ClassValidatorUntypedFormArray } from './class-validator-untyped-form-array';
+import { ClassType } from 'ngx-reactive-form-class-validator';
 
 // Coming from https://github.com/angular/angular/blob/3b0b7d22109c79b4dceb4ae069c3927894cf1bd6/packages/forms/src/form_builder.ts#L14
 const isAbstractControlOptions = (options: AbstractControlOptions | { [key: string]: any }): options is AbstractControlOptions =>
@@ -22,7 +21,7 @@ const isAbstractControlOptions = (options: AbstractControlOptions | { [key: stri
   (options as AbstractControlOptions).updateOn !== undefined;
 
 @Injectable()
-export class ClassValidatorFormBuilderService {
+export class ClassValidatorUntypedFormBuilderService {
   /**
    * @description
    * Construct a new `FormGroup` instance.
@@ -49,7 +48,7 @@ export class ClassValidatorFormBuilderService {
     formClassType: ClassType<any>,
     controlsConfig: { [p: string]: any },
     options?: AbstractControlOptions | { [p: string]: any } | null
-  ): ClassValidatorFormGroup {
+  ): ClassValidatorUntypedFormGroup {
     // Coming from https://github.com/angular/angular/blob/3b0b7d22109c79b4dceb4ae069c3927894cf1bd6/packages/forms/src/form_builder.ts#L59
     const controls = this.reduceControls(controlsConfig);
 
@@ -70,7 +69,7 @@ export class ClassValidatorFormBuilderService {
       }
     }
 
-    return new ClassValidatorFormGroup(formClassType, controls, { asyncValidators, updateOn, validators });
+    return new ClassValidatorUntypedFormGroup(formClassType, controls, { asyncValidators, updateOn, validators });
   }
 
   /**
@@ -87,14 +86,14 @@ export class ClassValidatorFormBuilderService {
    * @param asyncValidator A single async validator or array of async validator
    * functions.
    */
-  public array<T>(
-    controlsConfig: Array<T>,
+  public array(
+    controlsConfig: any[],
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
   ): FormArray {
     const controls = controlsConfig.map(control => this.createControl(control));
 
-    return new ClassValidatorFormArray(controls, validatorOrOpts, asyncValidator);
+    return new ClassValidatorUntypedFormArray(controls, validatorOrOpts, asyncValidator);
   }
 
 
@@ -121,12 +120,12 @@ export class ClassValidatorFormBuilderService {
    * <code-example path="forms/ts/formBuilder/form_builder_example.ts" region="disabled-control">
    * </code-example>
    */
-  public control<T>(
-    formState: T|FormControlState<T>,
+  public control(
+    formState: any,
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
-  ): ClassValidatorFormControl {
-    return new ClassValidatorFormControl(formState, validatorOrOpts, asyncValidator);
+  ): ClassValidatorUntypedFormControl {
+    return new ClassValidatorUntypedFormControl(formState, validatorOrOpts, asyncValidator);
   }
 
   // Coming from https://github.com/angular/angular/blob/3b0b7d22109c79b4dceb4ae069c3927894cf1bd6/packages/forms/src/form_builder.ts#L133
