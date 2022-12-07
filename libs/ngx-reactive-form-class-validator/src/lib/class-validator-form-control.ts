@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { validateSync } from 'class-validator';
 
-export class ClassValidatorFormControl<T = any> extends FormControl<T> {
+export class ClassValidatorFormControl<T = any> extends FormControl<T | any> {
   private formGroupClassValue: any;
   private name: string;
 
