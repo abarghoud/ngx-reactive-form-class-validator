@@ -3,10 +3,11 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:16
     steps:
     - checkout
     - run: yarn install
     - run: yarn add codecov
     - run: yarn build:lib
-    - run: yarn test:lib:coverage && npx codecov --token=04e1aa0a-7c13-4b0e-bfe6-9d22f1f2c2ea
+    - run: yarn test:lib:coverage && npx codecov --token=$CODE_COV_TOKEN
+
