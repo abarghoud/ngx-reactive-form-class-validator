@@ -1,0 +1,42 @@
+{
+  "name": "ngx-reactive-form-class-validator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ngx-reactive-form-class-validator/src",
+  "prefix": "ngx-reactive-form-class-validator",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/ngx-reactive-form-class-validator/tsconfig.lib.json",
+        "project": "libs/ngx-reactive-form-class-validator/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ngx-reactive-form-class-validator/tsconfig.lib.prod.json"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ngx-reactive-form-class-validator/src/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "tags": []
+}

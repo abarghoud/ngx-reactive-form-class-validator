@@ -46,9 +46,9 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
     
     yarn add ngx-reactive-form-class-validator
 ### Peer dependencies
-    "@angular/common": ">= 2.0.0 <= ^14.0.0",
-    "@angular/core": ">= 2.0.0 <= ^14.0.0",
-    "@angular/forms": ">= 2.0.0 <= ^14.0.0",
+    "@angular/common": ">= 2.0.0 <= ^16.0.0",
+    "@angular/core": ">= 2.0.0 <= ^16.0.0",
+    "@angular/forms": ">= 2.0.0 <= ^16.0.0",
     "class-validator": "^0.12.2"
 
 ## Usage
