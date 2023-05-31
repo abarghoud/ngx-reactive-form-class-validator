@@ -14,7 +14,14 @@
   },
   "defaultProject": "ngx-reactive-form-class-validator",
   "generators": {
-    "@nrwl/angular": {
+    "@nx/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nx/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular": {
       "application": {
         "linter": "eslint"
       },
@@ -24,13 +31,6 @@
       "storybook-configuration": {
         "linter": "eslint"
       }
-    },
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
