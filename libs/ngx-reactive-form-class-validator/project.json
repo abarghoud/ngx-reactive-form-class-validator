@@ -9,7 +9,8 @@
       "executor": "@nx/angular:package",
       "options": {
         "tsConfig": "libs/ngx-reactive-form-class-validator/tsconfig.lib.json",
-        "project": "libs/ngx-reactive-form-class-validator/ng-package.json"
+        "project": "libs/ngx-reactive-form-class-validator/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
@@ -28,8 +29,7 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts"
       }
     }
   },
