@@ -28,8 +28,7 @@
     "test": {
       "executor": "@nx/jest:jest",
       "options": {
-        "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts"
       }
     }
   },
