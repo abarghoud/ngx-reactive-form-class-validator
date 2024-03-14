@@ -1,0 +1,47 @@
+<h1>ngx-reactive-form-class-validator example</h1>
+
+<form [formGroup]="profileForm">
+  <div style="margin-bottom: 10px;">
+    <label>first name:</label>
+    <input type="text" formControlName="firstName" />
+    <span>{{ profileForm.get("firstName").errors | json }}</span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>last name:</label>
+    <input type="text" formControlName="lastName" />
+    <span>{{ profileForm.get("lastName").errors | json }}</span>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label>email:</label>
+    <input type="text" formControlName="email" />
+    <span>{{ profileForm.get("email").errors | json }}</span>
+  </div>
+
+  <div [formGroup]="addressForm">
+    <h3>Address</h3>
+    <div style="margin-bottom: 10px;">
+      <label>street:</label>
+      <input type="text" formControlName="street" />
+      <span>{{ addressForm.get("street").errors | json }}</span>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label>city:</label>
+      <input type="text" formControlName="city" />
+      <span>{{ addressForm.get("city").errors | json }}</span>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label>state:</label>
+      <input type="text" formControlName="state" />
+      <span>{{ addressForm.get("state").errors | json }}</span>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label>zip:</label>
+      <input type="text" formControlName="zip" />
+      <span>{{ addressForm.get("zip").errors | json }}</span>
+    </div>
+  </div>
+</form>
+<div>
+  <button (click)="clearValidators()" type="button">Clear validators</button>
+  <button (click)="resetValidators()" type="button">Reset validators</button>
+</div>
