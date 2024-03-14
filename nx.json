@@ -5,8 +5,11 @@
   "defaultProject": "ngx-reactive-form-class-validator",
   "generators": {
     "@nx/angular:application": {
+      "e2eTestRunner": "cypress",
+      "linter": "none",
+      "style": "css",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "strict": false
     },
     "@nx/angular:library": {
       "unitTestRunner": "jest"
@@ -45,6 +48,11 @@
           "codeCoverage": true
         }
       }
+    },
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
