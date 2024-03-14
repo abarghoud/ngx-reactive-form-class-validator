@@ -35,7 +35,7 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
 	  - [ClassValidatorFormBuilderService](#classvalidatorformbuilderservice)
 		  - [classType parameter](#classtype-parameter)
 	  - [ClassValidatorFormGroup](#classvalidatorformgroup)
-  - [Stackblitz example](https://stackblitz.com/edit/ngx-reactive-form-class-validator)
+  - [Stackblitz example](https://stackblitz.com/edit/ngx-reactive-form-class-validator-4pbcrp)
   - [Developer note](#developer-note)
   
 ## Installation
