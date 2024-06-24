@@ -49,7 +49,9 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
     "@angular/common": ">= 2.0.0 <= ^18.0.0",
     "@angular/core": ">= 2.0.0 <= ^18.0.0",
     "@angular/forms": ">= 2.0.0 <= ^18.0.0",
-    "class-validator": "^0.12.2"
+    "class-validator": ">= 0.12.0 <= ^0.14.0"
+
+###### _While this library will function with any version of class-validator within this range, we strongly recommend using class-validator ^0.14.0 or later due to a critical [security vulnerability](https://github.com/typestack/class-validator/blob/develop/CHANGELOG.md#:~:text=forbidUnknownValues%20option%20is%20enabled%20by%20default) addressed in versions 0.14.0 and beyond. This ensures the highest level of security for your application._
 
 ## Usage
 ### Defining classes with validators and deserializers
