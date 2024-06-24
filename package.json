@@ -57,7 +57,7 @@
     "bump-version:patch": "cd libs/ngx-reactive-form-class-validator && npm version patch --force",
     "pre-publish:minor": "run-s bump-version:minor build:lib-pack",
     "pre-publish:major": "run-s bump-version:major build:lib-pack",
-    "pre-publish:patch": "run-s bump-version:patch build:lib-pack commit-git"
+    "pre-publish:patch": "run-s bump-version:patch build:lib-pack"
   },
   "private": true,
   "dependencies": {
