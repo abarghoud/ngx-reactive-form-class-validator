@@ -47,14 +47,13 @@ class Profile {
 }
 
 @Component({
-  standalone: true,
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  imports: [
-    ReactiveFormsModule,
-    JsonPipe,
-    ClassValidatorFormBuilderModule,
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    imports: [
+        ReactiveFormsModule,
+        JsonPipe,
+        ClassValidatorFormBuilderModule,
+    ]
 })
 export class AppComponent implements OnInit {
   public profileForm: ClassValidatorFormGroup;
