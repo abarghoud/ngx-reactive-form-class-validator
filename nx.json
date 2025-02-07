@@ -69,5 +69,6 @@
     ]
   },
   "parallel": 1,
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "useLegacyCache": true
 }
