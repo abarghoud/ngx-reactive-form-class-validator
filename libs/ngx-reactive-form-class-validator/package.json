@@ -2,7 +2,7 @@
   "name": "ngx-reactive-form-class-validator",
   "description": "A lightweight library for dynamically validate Angular reactive forms using class-validator library.",
   "license": "MIT",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "keywords": [
     "ng",
     "angular",
