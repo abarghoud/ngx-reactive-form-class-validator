@@ -48,3 +48,12 @@ export class FakeUser {
   @MinLength(10)
   public username: string;
 }
+
+export class FakeThing {
+  @IsNotEmpty()
+  @IsEmail()
+  public first: string;
+
+  @IsNotEmpty()
+  public last: string;
+}

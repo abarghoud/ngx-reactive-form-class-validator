@@ -14,6 +14,7 @@ import { ClassValidatorFormGroup } from './class-validator-form-group';
 import { ClassValidatorFormControl } from './class-validator-form-control';
 import { ClassValidatorFormArray } from './class-validator-form-array';
 import { ClassType } from './types';
+import { ClassValidatorFormGroupOptions } from './class-validator-form-group-options.interface';
 
 // Coming from https://github.com/angular/angular/blob/3b0b7d22109c79b4dceb4ae069c3927894cf1bd6/packages/forms/src/form_builder.ts#L14
 const isAbstractControlOptions = (options: AbstractControlOptions | { [key: string]: any }): options is AbstractControlOptions =>
@@ -44,11 +45,16 @@ export class ClassValidatorFormBuilderService {
    * * `validator`: A synchronous validator function, or an array of validator functions
    * * `asyncValidator`: A single async validator or array of async validator functions
    *
+   * @param classValidatorGroupOptions Options object of type `ClassValidatorFormGroupOptions` allowing
+   * to define eagerValidation that validate controls immediately upon creation. Default is false (validators are executed starting from ngAfterViewInit hook)
+   * See https://github.com/abarghoud/ngx-reactive-form-class-validator/issues/47
+   *
    */
   public group(
     formClassType: ClassType<any>,
     controlsConfig: { [p: string]: any },
-    options?: AbstractControlOptions | { [p: string]: any } | null
+    options?: AbstractControlOptions | { [p: string]: any } | null,
+    classValidatorGroupOptions?: ClassValidatorFormGroupOptions,
   ): ClassValidatorFormGroup {
     // Coming from https://github.com/angular/angular/blob/3b0b7d22109c79b4dceb4ae069c3927894cf1bd6/packages/forms/src/form_builder.ts#L59
     const controls = this.reduceControls(controlsConfig);
@@ -70,7 +76,7 @@ export class ClassValidatorFormBuilderService {
       }
     }
 
-    return new ClassValidatorFormGroup(formClassType, controls, { asyncValidators, updateOn, validators });
+    return new ClassValidatorFormGroup(formClassType, controls, { asyncValidators, updateOn, validators }, undefined, classValidatorGroupOptions);
   }
 
   /**

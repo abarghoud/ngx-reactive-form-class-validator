@@ -2,6 +2,7 @@ import { AbstractControl, AbstractControlOptions, AsyncValidatorFn, UntypedFormG
 
 import { ClassValidatorUntypedFormControl } from './class-validator-untyped-form-control';
 import { ClassType } from '../types';
+import { ClassValidatorFormGroupOptions } from '../class-validator-form-group-options.interface';
 
 export class ClassValidatorUntypedFormGroup extends UntypedFormGroup {
   private classValue: any;
@@ -19,6 +20,10 @@ export class ClassValidatorUntypedFormGroup extends UntypedFormGroup {
    *
    * @param asyncValidator A single async validator or array of async validator functions
    *
+   * @param options Options object of type `ClassValidatorFormGroupOptions` allowing
+   * to define eagerValidation that validate controls immediately upon creation. Default is false (validators are executed starting from ngAfterViewInit hook)
+   * See https://github.com/abarghoud/ngx-reactive-form-class-validator/issues/47
+   *
    */
   public constructor(
     private readonly formClassType: ClassType<any>,
@@ -27,6 +32,7 @@ export class ClassValidatorUntypedFormGroup extends UntypedFormGroup {
     },
     validatorOrOpts?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null,
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null,
+    private readonly options?: ClassValidatorFormGroupOptions,
   ) {
     super(controls, validatorOrOpts, asyncValidator);
 
@@ -85,7 +91,7 @@ export class ClassValidatorUntypedFormGroup extends UntypedFormGroup {
     Object.entries(this.controls).forEach(([controlName, control]) => {
       if (control instanceof ClassValidatorUntypedFormControl) {
         (this.controls[controlName] as ClassValidatorUntypedFormControl)
-          .setNameAndFormGroupClassValue(controlName, this.classValue);
+          .setNameAndFormGroupClassValue(controlName, this.classValue, this.options?.eagerValidation);
       }
     });
   }

@@ -38,9 +38,13 @@ export class ClassValidatorFormControl<T = any> extends FormControl<T | any> {
   /**
    * @internal
    */
-  public setNameAndFormGroupClassValue(name: string, value: any): void {
+  public setNameAndFormGroupClassValue(name: string, value: any, eagerValidation: boolean = false): void {
     this.name = name;
     this.formGroupClassValue = value;
+
+    if (eagerValidation) {
+      this.updateValueAndValidity();
+    }
   }
 
   /**

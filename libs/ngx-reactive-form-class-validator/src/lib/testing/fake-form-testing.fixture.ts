@@ -5,6 +5,7 @@ import { ClassValidatorFormArray } from '../class-validator-form-array';
 import { ClassValidatorFormGroup } from '../class-validator-form-group';
 import { ClassValidatorFormControl } from '../class-validator-form-control';
 import { ClassValidatorUntypedFormControl } from '../untyped/class-validator-untyped-form-control';
+import { ClassValidatorUntypedFormArray, ClassValidatorUntypedFormGroup } from '../untyped';
 
 export const fakeContactFormGroup = new ClassValidatorFormArray([
   new ClassValidatorFormGroup(FakeContact, {
@@ -23,8 +24,8 @@ export const fakeUserFormControls = {
   contacts: new ClassValidatorFormArray([fakeContactFormGroup]),
 };
 
-export const fakeContactUntypedFormGroup = new ClassValidatorFormArray([
-    new ClassValidatorFormGroup(FakeContact, {
+export const fakeContactUntypedFormGroup = new ClassValidatorUntypedFormArray([
+    new ClassValidatorUntypedFormGroup(FakeContact, {
       phoneNumber: new ClassValidatorUntypedFormControl(''),
       email: new ClassValidatorUntypedFormControl(''),
       type: new ClassValidatorUntypedFormControl(FakeContactType.phone),
