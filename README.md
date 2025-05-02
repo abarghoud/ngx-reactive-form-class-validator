@@ -27,6 +27,7 @@ A lightweight library for dynamically validate Angular reactive forms using [cla
     - [Creating a ClassValidatorFormGroup](#creating-a-classvalidatorformgroup)
       - [Using ClassValidatorFormBuilderService](#using-classvalidatorformbuilderservice)
       - [Using ClassValidatorFormGroup class](#using-classvalidatorformgroup-class)
+      - [Eager Validation Option]()
     - [Add custom validators](#add-custom-validators)
       - [Providing validators when creating the ClassValidatorFormControl](#providing-validators-when-creating-the-classvalidatorformcontrol)
       - [Providing validators using  `setValidators`/`setValidatorsWithDynamicValidation`  methods](#providing-validators-using-setvalidatorssetvalidatorswithdynamicvalidation-methods)
@@ -143,6 +144,48 @@ Now, setting value to any of form controls, will perfom the validator set in the
 	
 	this.profileForm.controls.email.setValue('email@email.com');
     console.log(this.profileForm.controls.email) // null
+
+#### Eager Validation Option
+
+By default, `ngx-reactive-form-class-validator` validates form controls after the form is fully initialized (ngAfterViewInit).
+If you want validation to run immediately after form initialization (for example, in ngAfterViewInit or just after you create a FormGroup), you can enable eager validation at the ClassValidatorFormGroup/FormBuilder level.
+
+```
+import { ClassValidatorFormGroup, ClassValidatorFormControl } from 'ngx-reactive-form-class-validator';
+
+const formGroup = new ClassValidatorFormGroup({
+  email: new ClassValidatorFormControl(''),
+  password: new ClassValidatorFormControl('')
+}, null, { eagerValidation: true }); // 👈 Enable eager validation here
+
+
+// Or using the form builder
+
+public constructor(  
+ private fb: ClassValidatorFormBuilderService,  
+) { }
+
+ profileForm =  this.fb.group(
+    Profile,
+    {
+     firstName:  [''],
+     lastName:  [''],
+     email: [''],
+     address: this.fb.group(Address,
+          {
+              street:  [''],
+              city:  [''],
+              state:  [''],
+              zip:  ['']
+          }
+      ),
+    },
+    undefined,
+    { eagerValidation: true } // 👈 Enable eager validation here
+);
+
+```
+
 ### Add custom validators
 It is possible as well to combine dynamic validation with custom validation.
 There are several ways to do it:

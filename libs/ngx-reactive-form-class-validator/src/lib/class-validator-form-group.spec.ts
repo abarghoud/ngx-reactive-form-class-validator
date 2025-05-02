@@ -1,4 +1,4 @@
-import { FakeUser } from './testing/fake-user-testing.model';
+import { FakeThing, FakeUser } from './testing/fake-user-testing.model';
 import { fakeUserFormControls } from './testing/fake-form-testing.fixture';
 import { ClassValidatorFormGroup } from './class-validator-form-group';
 import { ClassValidatorFormControl } from './class-validator-form-control';
@@ -20,8 +20,8 @@ describe('The ClassValidatorFormGroup class', () => {
       expectedClassValue.firstName = fakeUserFormControls.firstName.value;
       expectedClassValue.id = fakeUserFormControls.id.value;
 
-      expect(firstNameSetNameAndClassValueSpy).toBeCalledWith('firstName', expectedClassValue);
-      expect(idSetNameAndClassValueSpy).toBeCalledWith('id', expectedClassValue);
+      expect(firstNameSetNameAndClassValueSpy).toBeCalledWith('firstName', expectedClassValue, undefined);
+      expect(idSetNameAndClassValueSpy).toBeCalledWith('id', expectedClassValue, undefined);
     });
   });
 
@@ -42,7 +42,7 @@ describe('The ClassValidatorFormGroup class', () => {
       const expectedClassValue = new FakeUser();
       expectedClassValue.firstName = 'name';
 
-      expect(formControlSetNameAndClassValueSpy).toBeCalledWith('firstName', expectedClassValue);
+      expect(formControlSetNameAndClassValueSpy).toBeCalledWith('firstName', expectedClassValue, undefined);
     });
   });
 
@@ -66,8 +66,41 @@ describe('The ClassValidatorFormGroup class', () => {
       expectedClassValue.id = fakeUserFormControls.id.value;
       expectedClassValue.isSessionLocked = fakeUserFormControls.isSessionLocked.value;
 
-      expect(idSetNameAndClassValueSpy).toBeCalledWith('id', expectedClassValue);
-      expect(isSessionLockedSetNameAndClassValueSpy).toBeCalledWith('isSessionLocked', expectedClassValue);
+      expect(idSetNameAndClassValueSpy).toBeCalledWith('id', expectedClassValue, undefined);
+      expect(isSessionLockedSetNameAndClassValueSpy).toBeCalledWith('isSessionLocked', expectedClassValue, undefined);
+    });
+  });
+
+  describe('The formGroup', () => {
+    let formGroup: ClassValidatorFormGroup;
+
+    describe('When FormControls are created normally', () => {
+      beforeEach(() => {
+        formGroup = new ClassValidatorFormGroup(FakeThing, {
+          first: new ClassValidatorFormControl('notemail'),
+          last: new ClassValidatorFormControl('')
+        });
+      })
+
+      it('should not run validators immediately', () => {
+        expect(formGroup.valid).toBe(true);
+        expect(formGroup.controls['first'].value).toBe('notemail');
+      });
+    });
+
+    describe('When FormControls are created with eagerValidation flag', () => {
+      beforeEach(() => {
+        formGroup = new ClassValidatorFormGroup(FakeThing, {
+          first: new ClassValidatorFormControl('notemail'),
+          last: new ClassValidatorFormControl('')
+        }, undefined, undefined, { eagerValidation: true });
+      })
+
+      it('should run validators immediately', () => {
+        expect(formGroup.valid).toBe(false);
+        expect(formGroup.controls['first'].value).toBe('notemail');
+        expect(formGroup.controls['first'].errors.isEmail).toBeDefined();
+      });
     });
   });
 });
