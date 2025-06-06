@@ -7,16 +7,25 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/test",
         "index": "apps/test/src/index.html",
         "browser": "apps/test/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/test/tsconfig.app.json",
-        "assets": ["apps/test/src/favicon.ico", "apps/test/src/assets"],
-        "styles": ["apps/test/src/styles.css"],
+        "assets": [
+          "apps/test/src/favicon.ico",
+          "apps/test/src/assets"
+        ],
+        "styles": [
+          "apps/test/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -44,7 +53,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "test:build:production"
@@ -53,10 +62,11 @@
           "buildTarget": "test:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "continuous": true
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "@angular/build:extract-i18n",
       "options": {
         "buildTarget": "test:build"
       }
