@@ -20,8 +20,8 @@ describe('The ClassValidatorFormGroup class', () => {
       expectedClassValue.firstName = fakeUserFormControls.firstName.value;
       expectedClassValue.id = fakeUserFormControls.id.value;
 
-      expect(firstNameSetNameAndClassValueSpy).toBeCalledWith('firstName', expectedClassValue, undefined);
-      expect(idSetNameAndClassValueSpy).toBeCalledWith('id', expectedClassValue, undefined);
+      expect(firstNameSetNameAndClassValueSpy).toHaveBeenCalledWith('firstName', expectedClassValue, undefined);
+      expect(idSetNameAndClassValueSpy).toHaveBeenCalledWith('id', expectedClassValue, undefined);
     });
   });
 
@@ -42,7 +42,7 @@ describe('The ClassValidatorFormGroup class', () => {
       const expectedClassValue = new FakeUser();
       expectedClassValue.firstName = 'name';
 
-      expect(formControlSetNameAndClassValueSpy).toBeCalledWith('firstName', expectedClassValue, undefined);
+      expect(formControlSetNameAndClassValueSpy).toHaveBeenCalledWith('firstName', expectedClassValue, undefined);
     });
   });
 
@@ -66,8 +66,8 @@ describe('The ClassValidatorFormGroup class', () => {
       expectedClassValue.id = fakeUserFormControls.id.value;
       expectedClassValue.isSessionLocked = fakeUserFormControls.isSessionLocked.value;
 
-      expect(idSetNameAndClassValueSpy).toBeCalledWith('id', expectedClassValue, undefined);
-      expect(isSessionLockedSetNameAndClassValueSpy).toBeCalledWith('isSessionLocked', expectedClassValue, undefined);
+      expect(idSetNameAndClassValueSpy).toHaveBeenCalledWith('id', expectedClassValue, undefined);
+      expect(isSessionLockedSetNameAndClassValueSpy).toHaveBeenCalledWith('isSessionLocked', expectedClassValue, undefined);
     });
   });
 
