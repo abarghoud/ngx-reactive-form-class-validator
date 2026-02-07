@@ -12,7 +12,7 @@ import {
 import { ClassValidatorUntypedFormGroup } from './class-validator-untyped-form-group';
 import { ClassValidatorUntypedFormControl } from './class-validator-untyped-form-control';
 import { ClassValidatorUntypedFormArray } from './class-validator-untyped-form-array';
-import { ClassType } from 'ngx-reactive-form-class-validator';
+import { ClassType } from '../types';
 
 // Coming from https://github.com/angular/angular/blob/3b0b7d22109c79b4dceb4ae069c3927894cf1bd6/packages/forms/src/form_builder.ts#L14
 const isAbstractControlOptions = (options: AbstractControlOptions | { [key: string]: any }): options is AbstractControlOptions =>
