@@ -4,6 +4,12 @@
   "projectType": "library",
   "sourceRoot": "libs/ngx-reactive-form-class-validator/src",
   "prefix": "ngx-reactive-form-class-validator",
+  "tags": [],
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -31,11 +37,5 @@
         "jestConfig": "libs/ngx-reactive-form-class-validator/jest.config.ts"
       }
     }
-  },
-  "generators": {
-    "@schematics/angular:component": {
-      "style": "scss"
-    }
-  },
-  "tags": []
+  }
 }
