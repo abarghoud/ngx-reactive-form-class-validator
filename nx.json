@@ -123,5 +123,6 @@
     ]
   },
   "parallel": 1,
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "analytics": false
 }
