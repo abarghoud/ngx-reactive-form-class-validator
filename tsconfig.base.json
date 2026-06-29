@@ -19,7 +19,10 @@
       "ngx-reactive-form-class-validator": [
         "libs/ngx-reactive-form-class-validator/src/index.ts"
       ]
-    }
+    },
+    "ignoreDeprecations": "6.0",
+    "strict": false,
+    "noUncheckedSideEffectImports": false
   },
   "exclude": ["node_modules", "tmp"]
 }

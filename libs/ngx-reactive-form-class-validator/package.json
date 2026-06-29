@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/abarghoud/ngx-reactive-form-class-validator#readme",
   "peerDependencies": {
-    "@angular/common": ">=2 <22",
-    "@angular/core": ">=2 <22",
-    "@angular/forms": ">=2 <22",
+    "@angular/common": ">=2 <23",
+    "@angular/core": ">=2 <23",
+    "@angular/forms": ">=2 <23",
     "class-validator": ">=0.12 <0.15"
   }
 }
