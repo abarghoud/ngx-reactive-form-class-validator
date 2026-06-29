@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:22.16.0
+      - image: cimg/node:24.18.0
     steps:
     - checkout
     - run: yarn install
